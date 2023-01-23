@@ -92,6 +92,15 @@
     .div2 {
         background-color: green;
     }
-    a {
+   .div1 a,
+   a.bored-api  {
         text-shadow: rgb(83, 255, 10) 1px 0 10px;
+        text-decoration: none;
     }
+
+
+  ul a {
+    text-decoration: none;
+    color: white
+    }
+
