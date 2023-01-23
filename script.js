@@ -147,7 +147,7 @@ fetch(newURL)
     priceP.innerHTML = `<strong>Budget: </strong>${returnBudget(json.price)}`;
     accessibilityP.innerHTML = `<strong>Accessibility: </strong>${returnDifficulty(json.accessibility)}`;
 
-    git
+
 
 
 })
