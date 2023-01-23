@@ -107,3 +107,13 @@
 .div4 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+@media (max-width: 500px) {
+    .div1,
+    .div2 {
+        background-color: red;
+            border: dotted white;
+    }
+
+    
+}
