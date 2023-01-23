@@ -73,7 +73,7 @@ fetch(BASE_URL)
     console.log(json)
   
 
-
+//to generate a new activity.
     const randomActivityButton = document.querySelector("form.generate-random input.submit");
 randomActivityButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -87,11 +87,41 @@ randomActivityButton.addEventListener("click", (event) => {
     const accessibilityJson = json.accessibility;
     const keyToNum = Number(json.key);
 
+  
+
     activityP.innerHTML = `<strong>Activity: </strong>${activityJson}.`;
     typeP.innerHTML = `<strong>Type: </strong>${typeJson}`;
     participantsP.innerHTML = `<strong>Participants: </strong>${participantsJson}`;
     priceP.innerHTML = `<strong>Budget: </strong>${returnBudget(priceJson)}`;
     accessibilityP.innerHTML = `<strong>Accessibility: </strong>${returnDifficulty(accessibilityJson)}`;
+    
+  //    loop through list to look for repeating results
+  const ul = document.querySelector("ul");
+    const li = document.createElement("li");
+    li.innerText = activityJson;
+const a = document.createElement("a");
+a.setAttribute("class", "fetch")
+a.href = `${BASE_URL}?key=${keyToNum}`;
+a.append(li);
+ul.append(a);
+const listItems = document.querySelectorAll("li")
+
+a.addEventListener("click", (event) => {
+    event.preventDefault();
+
+fetch(`${a.href}`)
+.then((response) => response.json())
+.then((json) => {
+activityP.innerHTML = `<strong>Activity: </strong>${json.activity}.`;
+typeP.innerHTML = `<strong>Type: </strong>${json.type[0].toUpperCase()+json.type.slice(1)}`;
+participantsP.innerHTML = `<strong>Participants: </strong>${json.participants}`;
+priceP.innerHTML = `<strong>Budget: </strong>${returnBudget(json.price)}`;
+accessibilityP.innerHTML = `<strong>Accessibility: </strong>${returnDifficulty(json.accessibility)}`
+})
+
+})
+// console.log(listItem)
+
 
 
 })
